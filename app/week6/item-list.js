@@ -1,28 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import ItemCard from "./item-card"; 
-import itemData from "./items.json"; 
 
-export default function ItemList() {
-  const [sortBy, setSortBy] = useState("name"); 
+export default function ItemList({ items }) {
+  const [sortBy, setSortBy] = useState("name");
 
-  let items = itemData.map((item) => ({
-    ...item,
-  }));
+  // Create a copy of the items prop to maintain immutability
+  const sortedItems = [...items];
 
-  items.sort((a, b) => {
+  sortedItems.sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
     } else if (sortBy === "category") {
       return a.category.localeCompare(b.category);
     } else {
-      return 0; 
+      return 0;
     }
   });
 
   return (
-    <>
+    <div>
       <div className="text-center">
         <label>Sort by:</label>
         <button
@@ -44,9 +41,14 @@ export default function ItemList() {
         </button>
       </div>
 
-      {items.map((item) => (
-        <ItemCard key={item.id} item={item} />
+      {/* Render the sorted items using the sortedItems copy */}
+      {sortedItems.map((item) => (
+        <div key={item.id}>
+          <p>Name: {item.name}</p>
+          <p>Quantity: {item.quantity}</p>
+          <p>Category: {item.category}</p>
+        </div>
       ))}
-    </>
+    </div>
   );
 }
