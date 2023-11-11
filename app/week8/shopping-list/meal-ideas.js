@@ -18,8 +18,6 @@ export default function MealIdea({ ingredient }) {
       if (ingredient) {
         setIsLoading(true);
         const fetchedMeals = await fetchMealIdeas({ ingredient });
-        console.log("Fetched Meals:", fetchedMeals);//testing
-        console.log(ingredient);//testing 
         setMeals(fetchedMeals);
         setIsLoading(false);
       }

@@ -34,8 +34,8 @@ export default function Page() {
 
   return (
     <div className="flex-col">
-      <h1 className="text-3xl font-bold text-center mt-5 mb-5">Shopping List (Week 7)</h1>
-      <NewItem onAddItem={(item) => handleAddItem(item)}></NewItem>
+      <h1 className="text-3xl font-bold text-center mt-5 mb-5">Shopping List (Week 8)</h1>
+      <NewItem onAddItem={(item) => handleSubmit(item)}></NewItem>
       <div className="flex">
       {/* ItemList */}
       <div className="flex-1">
